@@ -1,53 +1,53 @@
 # == Description
 #
-# "Dot files" for Jim Moore (aka "jdigger").
+# "Dot files" for BaseBox.org (aka "baseboxorg").
 #
 # == Assumptions
 #
 # The .zshenv template assumes that the 'github_token' fact has been set.
 # In Boxen, this is typically done in ~/.boxen/config.json
 #
-class people::jdigger::dotfiles {
+class people::baseboxorg::dotfiles {
   include git
 
   $home = "/Users/${::boxen_user}"
 
   repository { 'oh-my-zsh' :
-    source => 'https://github.com/jdigger/oh-my-zsh.git',
+    source => 'https://github.com/baseboxorg/oh-my-zsh.git',
     path   => "${home}/.oh-my-zsh",
   }
 
   file { "${home}/.zshrc":
-    source => 'puppet:///modules/people/jdigger/zshrc',
+    source => 'puppet:///modules/people/baseboxorg/zshrc',
   }
 
   file { "${home}/.zshenv":
-    content => template('people/jdigger/zshenv.erb')
+    content => template('people/baseboxorg/zshenv.erb')
   }
 
   file { "${home}/.zprofile":
-    source => 'puppet:///modules/people/jdigger/zprofile',
+    source => 'puppet:///modules/people/baseboxorg/zprofile',
   }
 
   file { "${home}/.gitconfig":
     # This should probably be managed using the git module instead...
-    source => 'puppet:///modules/people/jdigger/gitconfig',
+    source => 'puppet:///modules/people/baseboxorg/gitconfig',
   }
 
   file { "${home}/.profile":
-    source => 'puppet:///modules/people/jdigger/profile',
+    source => 'puppet:///modules/people/baseboxorg/profile',
   }
 
   file { "${home}/.shellpaths":
-    source => 'puppet:///modules/people/jdigger/shellpaths',
+    source => 'puppet:///modules/people/baseboxorg/shellpaths',
   }
 
   file { "${home}/.shellaliases":
-    source => 'puppet:///modules/people/jdigger/shellaliases',
+    source => 'puppet:///modules/people/baseboxorg/shellaliases',
   }
 
   file { "${home}/.shellvars":
-    source => 'puppet:///modules/people/jdigger/shellvars',
+    source => 'puppet:///modules/people/baseboxorg/shellvars',
   }
 
 }
